@@ -11,7 +11,8 @@ jobs:
     - name: build bucklescript
       run: |
         brew install npm yarn
-        yarn install
+        # TODO: install with yarn?
+        npm install
         ./build.sh
 
   linux:
