@@ -54,12 +54,11 @@ sig
                
   class type _text =
     object
-      (* inherit [Text.t] SVGElement._svgelement *)
+      inherit [Text.t] SVGElement._svgelement
       method build: string -> Text.t
       method clear: unit -> Text.t
       method length: unit -> int
       method font: font_param_t -> Text.t
-      method move: int -> int -> Text.t
       (* method set_font: unit ->  *)
     end [@bs]
   type t = _text Js.t
