@@ -11,7 +11,7 @@ jobs:
     - name: build bucklescript
       run: |
         brew install npm yarn
-        npm install
+        yarn install
         ./build.sh
 
   linux:
@@ -22,6 +22,6 @@ jobs:
     - name: build bucklescript
       run: |
         mkdir tmp
-        ( cd tmp; sudo apt install -y npm yarn )
-        npm install
+        sudo apt install -y npm yarn
+        yarn install
         ./build.sh
