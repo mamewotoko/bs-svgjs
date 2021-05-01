@@ -27,9 +27,22 @@ python3 -m http.server
 ```
 browse http://localhost:8000
 
+
+Build doc
+------------
+
+```
+./build.sh
+npm run doc-init
+npm run doc
+```
+
+[./docs](./docs) coantains document of svgjs
+
 Reference
 -----------
 * [SVG.js](https://svgjs.com/docs/3.0/)
+* [BsDoc](https://reasonml-community.github.io/bsdoc/docs/bsdoc/#no-bs-publishing-to-github)
 
 -----
 Takashi Masuyama < mamewotoko@gmail.com >  
