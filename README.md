@@ -27,10 +27,12 @@ python3 -m http.server
 ```
 browse http://localhost:8000
 
-Build doc
-------------
+Build doc on Mac
+--------------------
 
 ```
+yarn add bsdoc@6.0.4-alpha
+
 ./build.sh
 npm run doc-init
 npm run doc
