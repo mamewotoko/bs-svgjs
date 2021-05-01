@@ -22,7 +22,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: build bucklescript
       run: |
-        mkdir tmp
+        sudo apt update
         sudo apt install -y npm
         npm install
-        ./build.sh
+        bash -x ./build.sh
