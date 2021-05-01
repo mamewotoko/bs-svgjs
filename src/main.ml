@@ -110,10 +110,11 @@ let draw_main (draw : SVG.t) outer_planet inner_planet orbits =
 
   begin
     let orbit_text = Printf.sprintf "%.0f orbits" orbits in
+    let f = Text.font_param_t ~fill:"#0000FF" () in
 
-    ((draw ## text outer_planet_name) ## move) 10 20 |> ignore;
-    ((draw ## text inner_planet_name) ## move) 10 40 |> ignore;
-    ((draw ## text orbit_text) ## move) 10 (canvas_len - 20) |> ignore;
+    (((draw ## text outer_planet_name) ## move) 10 20) ## font f |> ignore;
+    (((draw ## text inner_planet_name) ## move) 10 40) ## font f |> ignore;
+    (((draw ## text orbit_text) ## move) 10 (canvas_len - 20)) ## font f |> ignore;
     (* draw_text draw "blue" 30 20 outer_planet_name; *)
     (* draw_text draw "blue" 30 40 inner_planet_name; *)
     (* draw_text draw "blue" 30 (canvas_len - 20) orbit_text; *)
