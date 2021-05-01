@@ -1,5 +1,7 @@
-bs-svg
+bs-svgjs
 =============
+
+A Bucklescript binding of svgjs 2.6.
 
 Setup
 ------
