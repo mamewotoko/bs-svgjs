@@ -1,5 +1,6 @@
 (* "svgjs": "^2.6.2" *)
 
+
 (* element.js *)
 module rec SVGElement:
 sig
@@ -14,11 +15,36 @@ sig
       method center: int -> int -> 'a
       method width: int [@@bs.get]
       method height: int [@@bs.get]
-      method size: int -> int -> 'a
+      method size: width:int -> height:int -> 'a
+      (* TODO: cx, cy are optional *)
+      method rotate: degree:float -> int -> int -> 'a
+      method scale: float -> float -> int -> int -> 'a
+      method translate: int -> int -> 'a
+      method skew: int -> int -> int -> int -> 'a
+      method opacity: float -> 'a
+      method dx: int -> 'a
+      method dy: int -> 'a
+      method dmove: int -> int -> 'a
+      method remove: unit -> 'a
+      (* method addTo: parent:SVGElement.t *)
+      method id: string -> 'a
+      method show: unit -> 'a
+      method hide: unit -> 'a
+      method visible: unit -> bool
+                                (*TODO: toString *)
     end [@bs]
   type 'a t = 'a _svgelement Js.t
 end = SVGElement
-  
+
+module rec Image:
+sig
+  class type _image =
+    object
+      inherit [Image.t] SVGElement._svgelement
+    end [@bs]
+  type t = _image Js.t
+end = Image
+
 module rec Line:
 sig
   type param_t = {
@@ -72,8 +98,7 @@ sig
       method nested: unit -> SVG.t
       method line: int -> int -> int -> int -> Line.t
       method text: string -> Text.t
-      (* TDOO: precent *)
-      (* method size: int -> int -> SVG.t *)
+      method image: path:string -> width:int -> height:int -> Image.t
     end [@bs]
   type t = _svg Js.t
   external svg: string -> SVG.t = "SVG"  [@@bs.module "svgjs"]
