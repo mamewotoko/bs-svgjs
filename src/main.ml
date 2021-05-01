@@ -115,6 +115,9 @@ let draw_main (draw : SVG.t) outer_planet inner_planet orbits =
     (((draw ## text outer_planet_name) ## move 10 20) ## font f) ## rotate ~degree:~-.20. 10 10 |> ignore;
     ((draw ## text inner_planet_name) ## move 10 40) ## font f |> ignore;
     ((draw ## text orbit_text) ## move 10 (canvas_len - 20)) ## font f |> ignore;
+    ((draw ## link ~url:"http://mamewo.ddo.jp/") ## text "link") ## move (canvas_len - 50) 30 |> ignore;
+    ((draw ## text orbit_text) ## move 10 (canvas_len - 20)) ## font f |> ignore;
+    
     (* draw_text draw "blue" 30 20 outer_planet_name; *)
     (* draw_text draw "blue" 30 40 inner_planet_name; *)
     (* draw_text draw "blue" 30 (canvas_len - 20) orbit_text; *)

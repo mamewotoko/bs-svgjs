@@ -1,7 +1,5 @@
 (* "svgjs": "^2.6.2" *)
 
-
-(* element.js *)
 module rec SVGElement:
 sig
   class type ['a] _svgelement =
@@ -15,7 +13,6 @@ sig
       method center: int -> int -> 'a
       method width: int [@@bs.get]
       method height: int [@@bs.get]
-      method size: width:int -> height:int -> 'a
       (* TODO: cx, cy are optional *)
       method rotate: degree:float -> int -> int -> 'a
       method scale: float -> float -> int -> int -> 'a
@@ -31,11 +28,16 @@ sig
       method show: unit -> 'a
       method hide: unit -> 'a
       method visible: unit -> bool
-                                (*TODO: toString *)
+      (* TODO: url or callback *)
+      method linkTo: url:string -> 'a
+
+      method addTo: 'a -> 'a
+                                     (*TODO: toString *)
+
     end [@bs]
   type 'a t = 'a _svgelement Js.t
 end = SVGElement
-
+       
 module rec Image:
 sig
   class type _image =
@@ -52,11 +54,6 @@ sig
       color: string [@bs.optional];
       opacity: float [@bs.optional];
     } [@@bs.deriving {abstract = light}]
-         
-  (* type param_t = *)
-  (*   | URL of string *)
-  (*   | Color of string *)
-  (*   | Spec of spec_param_t *)
 
   class type _line =
     object
@@ -90,15 +87,29 @@ sig
   type t = _text Js.t
 end = Text
 
+module rec A:
+sig
+  class type _a =
+    object
+      inherit [A.t] SVGElement._svgelement
+      method target: string -> A.t
+      method text: string -> Text.t
+      method image: path:string -> width:int -> height:int -> Image.t
+    end [@bs]
+  type t = _a Js.t
+end = A
+        
+(* element.js *)
 module rec SVG:
 sig
   class type _svg =
     object
-      inherit [SVG.t] SVGElement._svgelement
       method nested: unit -> SVG.t
       method line: int -> int -> int -> int -> Line.t
+      method size: width:int -> height:int -> 'a
       method text: string -> Text.t
       method image: path:string -> width:int -> height:int -> Image.t
+      method link: url:string -> A.t
     end [@bs]
   type t = _svg Js.t
   external svg: string -> SVG.t = "SVG"  [@@bs.module "svgjs"]
