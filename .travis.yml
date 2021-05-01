@@ -1,0 +1,15 @@
+language: sh
+#dist: focal
+#sudo: required
+
+jobs:
+  include:
+  - stage: bucklescript
+    script: |
+      brew install npm yarn
+      npm install
+      yarn add bsdoc@6.0.4-alpha
+      ./build.sh
+
+os:
+  - osx
