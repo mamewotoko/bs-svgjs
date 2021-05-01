@@ -1,0 +1,21 @@
+{
+    "name": "bs-svg",
+    "version": "0.0.1",
+    "description": "bs-svg =============",
+    "scripts": {
+        "clean": "bsb -clean-world",
+        "build": "bsb -make-world",
+        "watch": "bsb -make-world -w",
+        "doc": "mkdir -p doc && ocamldoc -html -d doc src/main.mli"
+    },
+    "author": "Takashi Masuyama",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@babel/core": "^7.13.16",
+        "babelify": "^10.0.0",
+        "browserify": "^17.0.0",
+        "bs-platform": "^9.0.2",
+        "bs-webapi": "^0.19.1",
+        "svgjs": "^2.6.2"
+    }
+}
