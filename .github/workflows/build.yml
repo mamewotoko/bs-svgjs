@@ -7,10 +7,12 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
     - name: build bucklescript
       run: |
-        brew install npm
         npm install
         ./build.sh
 
@@ -18,10 +20,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
     - name: build bucklescript
       run: |
-        sudo apt install -y npm
         npm install
         ./build.sh
 
