@@ -1,0 +1,27 @@
+name: CI on macos
+
+on: [push]
+
+jobs:
+  mac:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: build bucklescript
+      run: |
+        brew install npm
+        npm install
+        sh build.sh
+
+  linux:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: build bucklescript
+      run: |
+        apt install -y npm
+        npm install
+        sh build.sh
+
