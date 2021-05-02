@@ -1,6 +1,4 @@
-language: sh
-#dist: focal
-#sudo: required
+language: node_js
 
 jobs:
   include:
@@ -13,3 +11,4 @@ jobs:
 
 os:
   - osx
+osx_image: xcode11
