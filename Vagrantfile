@@ -65,11 +65,12 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision :vagrant_user, type: "shell", inline: <<-SHELL
      sudo apt-get update
-     sudo apt-get install -y git npm yarn esy
+     sudo apt-get install -y git npm
      git clone https://github.com/mamewotoko/bs-svgjs.git
      cd bs-svgjs
+     npm install yarn   
      yarn add "@mauna-ai/bsdoc-linux@6.0.5"
      npm install
-     ./setup.sh
+     ./build.sh
    SHELL
 end
