@@ -2,6 +2,12 @@
 
 module rec SVGElement:
 sig
+  type param_t = {
+      width: int [@bs.optional];
+      color: string [@bs.optional];
+      opacity: float [@bs.optional];
+    } [@@bs.deriving {abstract = light}]
+
   class type ['a] _svgelement =
     object
       method x: int [@@bs.get]
@@ -30,14 +36,16 @@ sig
       method visible: unit -> bool
       (* TODO: url or callback *)
       method linkTo: url:string -> 'a
-
+      method fill: color:string -> 'a
       method addTo: 'a -> 'a
+      (* check *)
+      method stroke: param_t -> 'a
                                      (*TODO: toString *)
 
     end [@bs]
   type 'a t = 'a _svgelement Js.t
 end = SVGElement
-       
+
 module rec Image:
 sig
   class type _image =
@@ -49,19 +57,54 @@ end = Image
 
 module rec Line:
 sig
-  type param_t = {
-      width: int [@bs.optional];
-      color: string [@bs.optional];
-      opacity: float [@bs.optional];
-    } [@@bs.deriving {abstract = light}]
-
   class type _line =
     object
-      method stroke: param_t -> Line.t
+      inherit [Line.t] SVGElement._svgelement
+                                  (* method plot *)
+                                  (* method array *)
+                                  
     end [@bs]
   type t = _line Js.t
 end = Line
 
+(* polyline *)
+module rec Polyline:
+sig
+  class type _polyline =
+    object
+      inherit [Polyline.t] SVGElement._svgelement
+      method clear: unit -> Polyline.t
+      method plot: string -> Polyline.t
+    end [@bs]
+  type t =  _polyline Js.t
+end = Polyline
+        
+(* polygon *)
+module rec Polygon:
+sig
+  class type _polygon =
+    object
+      inherit [Polygon.t] SVGElement._svgelement
+      method clear: unit -> Polygon.t
+      method length: unit -> int
+      method plot: string -> Polygon.t
+    end [@bs]
+  type t =  _polygon Js.t
+end = Polygon
+
+(* path *)
+module rec Path:
+sig
+  class type _path =
+    object
+      inherit [Path.t] SVGElement._svgelement
+      method clear: unit -> Path.t
+      method length: unit -> int
+      method plot: string -> Path.t
+    end [@bs]
+  type t =  _path Js.t
+end = Path
+        
 module rec Text:
 sig
   type font_param_t = {
@@ -74,7 +117,7 @@ sig
       variant: string [@bs.optional];
       style: string [@bs.optional];
     } [@@bs.deriving {abstract = light}]
-               
+
   class type _text =
     object
       inherit [Text.t] SVGElement._svgelement
@@ -87,6 +130,36 @@ sig
   type t = _text Js.t
 end = Text
 
+module rec Rect:
+sig
+  class type _rect =
+    object
+      inherit [Rect.t] SVGElement._svgelement
+      method radius: int -> Rect.t
+    end [@bs]
+  type t = _rect Js.t
+end = Rect
+
+module rec Circle:
+sig
+  class type _circle =
+    object
+      inherit [Circle.t] SVGElement._svgelement
+      method radius: int -> Circle.t
+    end [@bs]
+  type t = _circle Js.t
+end = Circle
+
+module rec Ellipse:
+sig
+  class type _ellipse =
+    object
+      inherit [Ellipse.t] SVGElement._svgelement
+      method radius: int -> int -> Ellipse.t
+    end [@bs]
+  type t = _ellipse Js.t
+end = Ellipse
+        
 module rec A:
 sig
   class type _a =
@@ -98,15 +171,32 @@ sig
     end [@bs]
   type t = _a Js.t
 end = A
+
+(* module rec G: *)
+(*   class type _g = *)
+(*     object *)
+(*       method add: SVG.t -> SVG.t *)
+(*     end [@bs] *)
+(*   type t = _g Js.t *)
+(* end = G *)
         
 (* element.js *)
 module rec SVG:
 sig
   class type _svg =
     object
-      method nested: unit -> SVG.t
-      method line: int -> int -> int -> int -> Line.t
       method size: width:int -> height:int -> 'a
+      method nested: unit -> SVG.t
+      (* TODO; result type should be group*)
+      method group: unit -> SVG.t
+      (* method path: string ->  *)
+      method line: from_x:int -> from_y:int -> to_x:int -> to_y:int -> Line.t
+      method rect: width:int -> height:int -> Rect.t
+      method circle: radius:int -> Circle.t
+      method ellipse: radius_x:int -> radius_y:int -> Ellipse.t
+      method path: path:string -> Path.t
+      method polyline: path:string -> Polygon.t
+      method polygon: path:string -> Polygon.t
       method text: string -> Text.t
       method image: path:string -> width:int -> height:int -> Image.t
       method link: url:string -> A.t

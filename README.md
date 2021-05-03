@@ -40,9 +40,14 @@ npm run doc
 
 [./docs](./docs) coantains document of svgjs
 
+TODO
+----
+* update to svgjs 3.0
+* test
+
 Reference
 -----------
-* [SVG.js](https://svgjs.com/docs/3.0/)
+* [SVG.js](https://svgjs.com/docs/2.6/)
 * [BsDoc](https://reasonml-community.github.io/bsdoc/docs/bsdoc/#no-bs-publishing-to-github)
 
 -----

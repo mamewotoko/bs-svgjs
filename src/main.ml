@@ -81,12 +81,12 @@ let draw_text draw color x y txt =
        ## font (Text.font_param_t ~fill:color ())
 ;;
            
-let draw_line draw color from_x from_y to_x to_y =
-  (draw ## line from_x from_y to_x to_y)
-    ## stroke (Line.param_t ~width:1 ~color:color ())
+let draw_line (draw: SVG.t) color from_x from_y to_x to_y =
+  (draw ## line ~from_x ~from_y ~to_x ~to_y)
+    ## stroke (SVGElement.param_t ~width:1 ~color:color ())
 ;;
 
-let draw_main (draw : SVG.t) outer_planet inner_planet orbits =
+let draw_main (draw: SVG.t) outer_planet inner_planet orbits =
   let outer_planet_year = year outer_planet in
   let inner_planet_year = year inner_planet in
   let outer_planet_radius = orbit outer_planet in
@@ -118,9 +118,29 @@ let draw_main (draw : SVG.t) outer_planet inner_planet orbits =
     ((draw ## link ~url:"http://mamewo.ddo.jp/") ## text "link") ## move (canvas_len - 50) 30 |> ignore;
     ((draw ## text orbit_text) ## move 10 (canvas_len - 20)) ## font f |> ignore;
     
-    (* draw_text draw "blue" 30 20 outer_planet_name; *)
-    (* draw_text draw "blue" 30 40 inner_planet_name; *)
-    (* draw_text draw "blue" 30 (canvas_len - 20) orbit_text; *)
+    (* rect *) 
+    ((draw ## rect ~width:20 ~height:20)
+      ## fill ~color:"#070")
+      ## move 10 (canvas_len - 80) |> ignore;
+
+    ((draw ## circle ~radius:20)
+       ## fill ~color:"red")
+      ## move 10 (canvas_len - 40) |> ignore;
+
+    ((draw ## ellipse ~radius_x:10 ~radius_y:20)
+       ## fill ~color:"pink")
+      ## move 40 (canvas_len - 40) |> ignore;
+
+    ((((draw ## polyline ~path:"0,0 10,50 50,10")
+        ## fill ~color:"none"))
+       ## stroke (SVGElement.param_t ~width:1 ()))
+      ## move (canvas_len - 80) 10 |> ignore;
+
+    ((((draw ## path ~path:"M0,0 10,50 50,10")
+        ## fill ~color:"none"))
+       ## stroke (SVGElement.param_t ~width:4 ~color:"aqua" ()))
+      ## move (canvas_len - 80) 0 |> ignore;
+    
     while !r < rstop do
       let i = int_of_float (floor (!r /. interval_days /. 75.)) in
       let color = 
@@ -141,8 +161,10 @@ let draw_main (draw : SVG.t) outer_planet inner_planet orbits =
         let x2 = r2 *. cos !a2 in
         let y2 = r2 *. sin !a2 in
         ignore @@ draw_line draw color
-          (int_of_float (x1 +. xcenter)) (int_of_float (y1 +. ycenter))
-          (int_of_float (x2 +. xcenter)) (int_of_float (y2 +. ycenter));
+                            (int_of_float (x1 +. xcenter))
+                            (int_of_float (y1 +. ycenter))
+                            (int_of_float (x2 +. xcenter))
+                            (int_of_float (y2 +. ycenter));
         r := !r +. interval_days;
       end;
     done;
