@@ -20,7 +20,7 @@ sh build.sh
 Run
 ---
 
-browse index.html 
+browse [index.html](./index.html)
 
 ```
 python3 -m http.server
