@@ -38,9 +38,16 @@ sig
       method linkTo: url:string -> 'a
       method fill: color:string -> 'a
       method addTo: 'a -> 'a
+      method hasClass: string -> bool
+      method addClass: string -> 'a
+      method removeClass: string -> 'a
+      method toggleClass: string -> 'a
+      (* TODO *)
+      (* method matches: selector:string -> 'b SVGElement.t *)
+      (* method classes *)
       (* check *)
       method stroke: param_t -> 'a
-                                     (*TODO: toString *)
+                                  (*TODO: toString *)
 
     end [@bs]
   type 'a t = 'a _svgelement Js.t
@@ -60,8 +67,8 @@ sig
   class type _line =
     object
       inherit [Line.t] SVGElement._svgelement
-                                  (* method plot *)
-                                  (* method array *)
+                       (* TODO: method plot *)
+                       (* TODO: method array *)
                                   
     end [@bs]
   type t = _line Js.t
@@ -179,7 +186,8 @@ end = A
 (*     end [@bs] *)
 (*   type t = _g Js.t *)
 (* end = G *)
-        
+
+(* TODO; defs *)
 (* element.js *)
 module rec SVG:
 sig
@@ -189,7 +197,7 @@ sig
       method nested: unit -> SVG.t
       (* TODO; result type should be group*)
       method group: unit -> SVG.t
-      (* method path: string ->  *)
+
       method line: from_x:int -> from_y:int -> to_x:int -> to_y:int -> Line.t
       method rect: width:int -> height:int -> Rect.t
       method circle: radius:int -> Circle.t

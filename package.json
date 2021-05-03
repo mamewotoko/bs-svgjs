@@ -7,7 +7,7 @@
         "build": "bsb -make-world",
         "watch": "bsb -make-world -w",
         "doc-init": "yarn run bsdoc support-files",
-        "doc": "mkdir -p docs && yarn run bsdoc build -o docs Svgjs"
+        "build:doc": "bsb -make-world && mkdir -p docs && yarn run bsdoc build -o docs Svgjs"
     },
     "author": "Takashi Masuyama",
     "license": "Apache-2.0",
@@ -17,6 +17,7 @@
         "browserify": "^17.0.0",
         "bs-platform": "^9.0.2",
         "bs-webapi": "^0.19.1",
+        "bsdoc": "6.0.4-alpha",
         "svgjs": "^2.6.2"
     }
 }

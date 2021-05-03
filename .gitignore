@@ -2,3 +2,5 @@
 /lib/
 /js/
 /node_modules/
+/src/*.bs.js
+/.vagrant/

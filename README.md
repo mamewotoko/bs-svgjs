@@ -35,7 +35,7 @@ yarn add bsdoc@6.0.4-alpha
 
 ./build.sh
 npm run doc-init
-npm run doc
+npm run build:doc
 ```
 
 [./docs](./docs) coantains document of svgjs

@@ -13,7 +13,13 @@ $(npm bin)/browserify -t babelify src/main.bs.js > js/main.browser.js
 sed -i -e 's/Svgjs.SVG/SVG/g' js/main.browser.js
 
 # bsdoc for linux/windows are not included in bsdoc package
-if [ $(uname) = "Darwin" ]; then
+UNAME=$(uname)
+if [ "$UNAME" = "Darwin" ]; then
+    yarn add bsdoc@6.0.4-alpha
     npm run doc-init
-    npm run doc
+    npm run build:doc
+elif [ "$UNAME" = "Linux" ]; then
+    npm install @mauna-ai/bsdoc-linux
+    npm run doc-init
+    npm run build:doc
 fi
