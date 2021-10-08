@@ -6,15 +6,15 @@ A Bucklescript binding of svgjs 2.6.
 Setup
 ------
 
-```
+```bash
 npm install
 ```
 
 Build
 ------
 
-```
-sh build.sh
+```bash
+./build.sh
 ```
 
 Run
@@ -22,7 +22,7 @@ Run
 
 browse [index.html](./index.html)
 
-```
+```bash
 python3 -m http.server
 ```
 browse http://localhost:8000
@@ -30,7 +30,7 @@ browse http://localhost:8000
 Build doc on Mac
 --------------------
 
-```
+```bash
 yarn add bsdoc@6.0.4-alpha
 
 ./build.sh
@@ -47,9 +47,10 @@ TODO
 
 Reference
 -----------
-* [SVG.js](https://svgjs.com/docs/2.6/)
+
+* [SVG.js](https://svgjs.dev/docs/2.7/)
 * [BsDoc](https://reasonml-community.github.io/bsdoc/docs/bsdoc/#no-bs-publishing-to-github)
 
 -----
-Takashi Masuyama < mamewotoko@gmail.com >  
+Takashi Masuyama < mamewotoko@gmail.com >
 http://mamewo.ddo.jp/
