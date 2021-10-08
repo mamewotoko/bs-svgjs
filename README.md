@@ -20,12 +20,12 @@ Build
 Run
 ---
 
-browse [index.html](./index.html)
+Run http server
 
 ```bash
-python3 -m http.server
+./run.sh
 ```
-browse http://localhost:8000
+browse http://localhost:8080
 
 Build doc on Mac
 --------------------

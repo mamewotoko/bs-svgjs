@@ -8,14 +8,14 @@ npm run build
 mkdir -p js
 $(npm bin)/browserify -t babelify src/main.bs.js > js/main.browser.js
 
-# TODO; remove 
+# TODO; remove
 # by loading Svgjs, SVG is defined as a function
-sed -i -e 's/Svgjs.SVG/SVG/g' js/main.browser.js
+sed -i "" 's/Svgjs.SVG/SVG/g' js/main.browser.js
 
 # bsdoc for linux/windows are not included in bsdoc package
 UNAME=$(uname)
 if [ "$UNAME" = "Darwin" ]; then
-    yarn add bsdoc@6.0.4-alpha
+    $(npm bin)/yarn add bsdoc@6.0.4-alpha
     npm run doc-init
     npm run build:doc
 elif [ "$UNAME" = "Linux" ]; then
