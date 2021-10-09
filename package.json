@@ -11,6 +11,10 @@
         "serve": "http-server"
     },
     "author": "Takashi Masuyama",
+    "repository": {
+	"type": "git",
+	"url": "https://github.com/mamewotoko/bs-svgjs.git"
+    },
     "license": "Apache-2.0",
     "dependencies": {
         "@svgdotjs/svg.js": "^3.1.1"
