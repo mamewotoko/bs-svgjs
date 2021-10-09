@@ -13,8 +13,11 @@
     "author": "Takashi Masuyama",
     "license": "Apache-2.0",
     "dependencies": {
+        "@svgdotjs/svg.js": "^3.1.1"
+    },
+    "devDependencies": {
         "@babel/core": "^7.13.16",
-        "@svgdotjs/svg.js": "^3.1.1",
+        "babel-preset-es2015": "^6.24.1",
         "babelify": "^10.0.0",
         "browserify": "^17.0.0",
         "bs-platform": "^9.0.2",
@@ -22,8 +25,5 @@
         "bsdoc": "6.0.4-alpha",
         "http-server": "^13.0.2",
         "yarn": "^1.22.15"
-    },
-    "devDependencies": {
-        "babel-preset-es2015": "^6.24.1"
     }
 }

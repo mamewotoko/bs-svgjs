@@ -4,6 +4,7 @@ set -e
 
 cd $(dirname $0)
 
+
 npm run build
 mkdir -p examples/js
 $(npm bin)/browserify -t babelify examples/src/main.bs.js > examples/js/main.browser.js
