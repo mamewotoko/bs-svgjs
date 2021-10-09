@@ -1,4 +1,4 @@
-bs-svgjs [![CI](https://github.com/mamewotoko/bs-svgjs/actions/workflows/build.yml/badge.svg)](https://github.com/mamewotoko/bs-svgjs/actions/workflows/build.yml) [![Build Status](https://travis-ci.com/mamewotoko/bs-svgjs.svg?branch=master)](https://travis-ci.com/mamewotoko/bs-svgjs)
+bs-svgjs [![CI](https://github.com/mamewotoko/bs-svgjs/actions/workflows/build.yml/badge.svg)](https://github.com/mamewotoko/bs-svgjs/actions/workflows/build.yml)
 =============
 
 A Bucklescript binding of svgjs 2.6.
@@ -53,4 +53,5 @@ Reference
 
 -----
 Takashi Masuyama < mamewotoko@gmail.com >
+
 http://mamewo.ddo.jp/
