@@ -1,4 +1,4 @@
-(* "svgjs": "^2.6.2" *)
+(* svgjs: 3.1.1 *)
 
 module rec SVGElement:
 sig
@@ -69,7 +69,7 @@ sig
       inherit [Line.t] SVGElement._svgelement
                        (* TODO: method plot *)
                        (* TODO: method array *)
-                                  
+
     end [@bs]
   type t = _line Js.t
 end = Line
@@ -85,7 +85,7 @@ sig
     end [@bs]
   type t =  _polyline Js.t
 end = Polyline
-        
+
 (* polygon *)
 module rec Polygon:
 sig
@@ -111,7 +111,7 @@ sig
     end [@bs]
   type t =  _path Js.t
 end = Path
-        
+
 module rec Text:
 sig
   type font_param_t = {
@@ -166,7 +166,7 @@ sig
     end [@bs]
   type t = _ellipse Js.t
 end = Ellipse
-        
+
 module rec A:
 sig
   class type _a =
