@@ -6,11 +6,13 @@ cd $(dirname $0)
 
 npm run build
 mkdir -p js
-$(npm bin)/browserify -t babelify src/main.bs.js > js/main.browser.js
+$(npm bin)/browserify -t babelify examples/main.bs.js > js/main.browser.js
 
 # TODO; remove
 # by loading Svgjs, SVG is defined as a function
 sed -i "" 's/Svgjs.SVG/SVG/g' js/main.browser.js
+
+
 
 # bsdoc for linux/windows are not included in bsdoc package
 UNAME=$(uname)

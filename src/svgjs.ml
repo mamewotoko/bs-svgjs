@@ -198,6 +198,7 @@ sig
       (* TODO; result type should be group*)
       method group: unit -> SVG.t
 
+      method addTo: string -> SVG.t
       method line: from_x:int -> from_y:int -> to_x:int -> to_y:int -> Line.t
       method rect: width:int -> height:int -> Rect.t
       method circle: radius:int -> Circle.t
@@ -210,5 +211,7 @@ sig
       method link: url:string -> A.t
     end [@bs]
   type t = _svg Js.t
-  external svg: string -> SVG.t = "SVG"  [@@bs.module "svgjs"]
+
+  external make: unit -> SVG.t = "SVG" [@@bs.val]
 end = SVG
+
