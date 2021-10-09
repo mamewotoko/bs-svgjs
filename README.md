@@ -1,7 +1,7 @@
 bs-svgjs [![CI](https://github.com/mamewotoko/bs-svgjs/actions/workflows/build.yml/badge.svg)](https://github.com/mamewotoko/bs-svgjs/actions/workflows/build.yml)
 =============
 
-A Bucklescript binding of svgjs 2.6.
+A Bucklescript binding of svgjs 3.1.1. [Demo](https://mamewotoko.github.io/bs-svgjs/examples/)
 
 Setup
 ------
