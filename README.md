@@ -42,7 +42,6 @@ npm run build:doc
 
 TODO
 ----
-* update to svgjs 3.0
 * test
 
 Reference

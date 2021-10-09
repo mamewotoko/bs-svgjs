@@ -11,6 +11,9 @@ $(npm bin)/browserify -t babelify examples/src/main.bs.js > examples/js/main.bro
 
 cp node_modules/@svgdotjs/svg.js/dist/svg.min.js examples/js
 
+# skip building doc
+exit 0
+
 # bsdoc for linux/windows are not included in bsdoc package
 UNAME=$(uname)
 if [ "$UNAME" = "Darwin" ]; then
