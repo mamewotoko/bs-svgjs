@@ -24,7 +24,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y npm
-        npm install
+        npm update npm
         bash -x ./build.sh
         # doc
         mkdir public
@@ -34,16 +34,3 @@ jobs:
       with:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_dir: ./public
-
-  doc:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: build bucklescript
-      run: |
-        sudo apt update
-        sudo apt install -y npm
-        npm update npm
-        npm install
-        bash -x ./build.sh
