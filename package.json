@@ -22,7 +22,6 @@
         "browserify": "^17.0.0",
         "bs-platform": "^9.0.2",
         "bs-webapi": "^0.19.1",
-        "bsdoc": "6.0.4-alpha",
         "http-server": "^13.0.2"
     }
 }
