@@ -66,11 +66,15 @@ Vagrant.configure("2") do |config|
   config.vm.provision :vagrant_user, type: "shell", inline: <<-SHELL
      sudo apt-get update
      sudo apt-get install -y git npm
-     git clone https://github.com/mamewotoko/bs-svgjs.git
+     # git clone https://github.com/mamewotoko/bs-svgjs.git
+     rm -rf bs-svgjs || true
+     cp -r /vagrant/ ./bs-svgjs
+     chown -R vagrant:vabrant bs-svgjs
      cd bs-svgjs
-     npm install yarn   
      yarn add "@mauna-ai/bsdoc-linux@6.0.5"
      npm install
-     ./build.sh
+     pwd
+     ls -l
+     bash ./build.sh
    SHELL
 end
