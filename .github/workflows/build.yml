@@ -10,8 +10,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: build bucklescript
       run: |
-        brew install npm
-        npm install
+        ./setup.sh
         ./build.sh
 
   linux:
@@ -21,11 +20,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: build bucklescript
       run: |
-        sudo apt update
-        sudo apt install -y npm
-        npm update npm
-        npm i
-        bash -x ./build.sh
+        ./setup.sh
+        ./build.sh
         # doc
         mkdir public
         cp -r examples docs public
