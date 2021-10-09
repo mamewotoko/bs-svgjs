@@ -10,9 +10,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: build bucklescript
       run: |
-        brew install npm yarn
+        brew install npm
         npm install
-        yarn add bsdoc@6.0.4-alpha
         ./build.sh
 
   linux:
