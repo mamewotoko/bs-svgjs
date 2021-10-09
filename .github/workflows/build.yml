@@ -26,3 +26,23 @@ jobs:
         sudo apt install -y npm
         npm install
         bash -x ./build.sh
+        # doc
+        mkdir public
+        cp -r examples docs public
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        publish_dir: ./public
+
+  doc:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build bucklescript
+      run: |
+        sudo apt update
+        sudo apt install -y npm
+        npm install
+        bash -x ./build.sh

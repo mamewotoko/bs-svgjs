@@ -1,6 +1,5 @@
 .DS_Store
 /lib/
-/js/
 /node_modules/
-/src/*.bs.js
+*.bs.js
 /.vagrant/

@@ -25,7 +25,7 @@ Run http server
 ```bash
 ./run.sh
 ```
-browse http://localhost:8080
+browse http://localhost:8080/examples/index.html
 
 Build doc on Mac
 --------------------
